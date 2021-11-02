@@ -9,9 +9,9 @@ RUN rm -rf /var/lib/apt/lists/*
 
 RUN usermod -G video telegraf
 
-RUN setcap cap_net_raw+ep /usr/bin/telegraf \
-    setcap cap_net_raw+ep /usr/bin/mtr \
-    setcap cap_net_raw+ep /usr/bin/speedtest
+RUN setcap cap_net_raw+ep /usr/bin/telegraf
+RUN setcap cap_net_raw+ep /usr/bin/mtr
+RUN setcap cap_net_raw+ep /usr/bin/speedtest
 
 USER telegraf
 
