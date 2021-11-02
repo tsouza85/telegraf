@@ -4,7 +4,8 @@ USER root
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     mtr speedtest-cli \
-    rm -rf /var/lib/apt/lists/*
+
+RUN rm -rf /var/lib/apt/lists/*
 
 RUN usermod -G video telegraf \
     setcap cap_net_raw+ep /usr/bin/telegraf \
