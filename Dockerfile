@@ -1,7 +1,5 @@
 FROM telegraf:latest
 
-ARG ARCH
-
 RUN apt-get update && apt-get install -y --no-install-recommends \
     mtr \
     speedtest-cli && \
