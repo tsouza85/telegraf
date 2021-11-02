@@ -3,8 +3,7 @@ FROM telegraf:latest
 USER root
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    mtr \
-    speedtest-cli && \
+    mtr speedtest-cli \
     rm -rf /var/lib/apt/lists/* \
     usermod -G video telegraf
 
