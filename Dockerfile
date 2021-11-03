@@ -4,21 +4,20 @@ USER root
 
 RUN apt-get update && apt-get install -y --no-install-recommends mtr-tiny && \
     apt clean && \
-    rm -rf /var/lib/apt/lists/*
-
-RUN usermod -G video telegraf
+    rm -rf /var/lib/apt/lists/*; \
+    usermod -G video telegraf
 
 RUN wget -O speedtest.tgz "https://install.speedtest.net/app/cli/ookla-speedtest-1.0.0-x86_64-linux.tgz"; \
     tar -xvf speedtest.tgz -C /usr/bin speedtest; \
-    rm speedtest.tgz
-RUN speedtest --accept-license --accept-gdpr; \
+    rm speedtest.tgz; \
+    speedtest --accept-license --accept-gdpr; \
     mkdir -p /etc/telegraf/.config/ookla; \
     cp /root/.config/ookla/speedtest-cli.json /etc/telegraf/.config/ookla/speedtest-cli.json; \
     chown telegraf:telegraf /etc/telegraf -R
 
-RUN setcap cap_net_raw+ep /usr/bin/telegraf
-RUN setcap cap_net_raw+ep /usr/bin/mtr
-RUN setcap cap_net_raw+ep /usr/bin/speedtest
+RUN setcap cap_net_raw+ep /usr/bin/telegraf; \
+    setcap cap_net_raw+ep /usr/bin/mtr; \
+    setcap cap_net_raw+ep /usr/bin/speedtest
 
 EXPOSE 8125/udp 8092/udp 8094
 
