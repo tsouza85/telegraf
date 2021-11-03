@@ -17,8 +17,6 @@ RUN setcap cap_net_raw+ep /usr/bin/telegraf
 RUN setcap cap_net_raw+ep /usr/bin/mtr
 RUN setcap cap_net_raw+ep /usr/bin/speedtest
 
-USER telegraf
-
 EXPOSE 8125/udp 8092/udp 8094
 
 ENTRYPOINT ["/entrypoint.sh"]
