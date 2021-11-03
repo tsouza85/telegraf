@@ -6,8 +6,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends mtr speedtest-c
     apt clean && \
     rm -rf /var/lib/apt/lists/*
 
-RUN usermod -G video telegraf \
-    setcap cap_net_raw+ep /usr/bin/telegraf \
+RUN usermod -G video telegraf
+
+RUN setcap cap_net_raw+ep /usr/bin/telegraf \
     setcap cap_net_raw+ep /usr/bin/mtr \
     setcap cap_net_raw+ep /usr/bin/speedtest
 
