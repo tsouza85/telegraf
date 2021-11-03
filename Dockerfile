@@ -19,5 +19,7 @@ RUN setcap cap_net_raw+ep /usr/bin/speedtest
 
 EXPOSE 8125/udp 8092/udp 8094
 
+USER telegraf
+
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["telegraf"]
