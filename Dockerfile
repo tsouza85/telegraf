@@ -2,7 +2,7 @@ FROM telegraf:latest
 
 USER root
 
-RUN apt-get update && apt-get install -y --no-install-recommends mtr-tiny && \
+RUN apt-get update && apt-get install -y --no-install-recommends mtr-tiny dnsutils && \
     apt clean && \
     rm -rf /var/lib/apt/lists/*; \
     usermod -G video telegraf; \
